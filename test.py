@@ -7,7 +7,7 @@ import numpy as np
 import itertools
 import matplotlib.pyplot as plt
 
-# Change this to your own setting
+# TODO: Change this to your own setting
 os.environ['PYTHONPATH']='/env/python:~/github/waymo-open-dataset'
 m=imp.find_module('waymo_open_dataset', ['.'])
 imp.load_module('waymo_open_dataset', m[0], m[1], m[2])
@@ -29,7 +29,7 @@ def image_show(data, name, layout, cmap=None):
 # read one frame
 
 # FILENAME = 'tutorial/frames'
-# Change this to your own setting
+# TODO: Change this to your own setting
 filepath = '~/whitebase/Dataset/waymo/training_0000/segment-1208303279778032257_1360_000_1380_000_with_camera_labels.tfrecord'
 FILENAME = filepath
 
