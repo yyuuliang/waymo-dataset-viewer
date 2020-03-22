@@ -60,6 +60,7 @@ def parse_range_image_and_camera_projection(frame):
   range_image_top_pose = None
   for laser in frame.lasers:
     if len(laser.ri_return1.range_image_compressed) > 0:
+      # use tf.io.decode_compressed() if TF 2.0
       range_image_str_tensor = tf.decode_compressed(
           laser.ri_return1.range_image_compressed, 'ZLIB')
       ri = open_dataset.MatrixFloat()
@@ -67,24 +68,28 @@ def parse_range_image_and_camera_projection(frame):
       range_images[laser.name] = [ri]
 
       if laser.name == open_dataset.LaserName.TOP:
+        # use tf.io.decode_compressed() if TF 2.0
         range_image_top_pose_str_tensor = tf.decode_compressed(
             laser.ri_return1.range_image_pose_compressed, 'ZLIB')
         range_image_top_pose = open_dataset.MatrixFloat()
         range_image_top_pose.ParseFromString(
             bytearray(range_image_top_pose_str_tensor.numpy()))
 
+      # use tf.io.decode_compressed() if TF 2.0
       camera_projection_str_tensor = tf.decode_compressed(
           laser.ri_return1.camera_projection_compressed, 'ZLIB')
       cp = open_dataset.MatrixInt32()
       cp.ParseFromString(bytearray(camera_projection_str_tensor.numpy()))
       camera_projections[laser.name] = [cp]
     if len(laser.ri_return2.range_image_compressed) > 0:
+      # use tf.io.decode_compressed() if TF 2.0
       range_image_str_tensor = tf.decode_compressed(
           laser.ri_return2.range_image_compressed, 'ZLIB')
       ri = open_dataset.MatrixFloat()
       ri.ParseFromString(bytearray(range_image_str_tensor.numpy()))
       range_images[laser.name].append(ri)
 
+      # use tf.io.decode_compressed() if TF 2.0
       camera_projection_str_tensor = tf.decode_compressed(
           laser.ri_return2.camera_projection_compressed, 'ZLIB')
       cp = open_dataset.MatrixInt32()
