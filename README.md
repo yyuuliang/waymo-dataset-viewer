@@ -19,3 +19,6 @@ Here are some projects I found useful while processing the Waymo dataset. Please
     2. Waymo_Kitti_Adapter
         [https://github.com/Yao-Shao/Waymo_Kitti_Adapter](https://github.com/Yao-Shao/Waymo_Kitti_Adapter)
         This is a tool converting Waymo open dataset format to Kitti dataset format.
+    3. Simple Waymo Open Dataset Reader
+        [https://github.com/gdlg/simple-waymo-open-dataset-reader](https://github.com/gdlg/simple-waymo-open-dataset-reader)
+        This is a simple file reader for the Waymo Open Dataset which does not depend on TensorFlow and Bazel. The main goal is to be able to quickly integrate Waymo’s dataset with other deep learning frameworks without having to pull tons of dependencies. It does not aim to replace the whole framework, especially the evaluation metrics that they provide.
